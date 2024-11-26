@@ -1,0 +1,23 @@
+
+services:
+  ui:
+    build: ./task_manager_challenge.ui
+    container_name: ui_c
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    stdin_open: true
+    tty: true
+
+  api:
+    build: ./TaskManagerChallenge.API
+    container_name: api_c
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./Data:/app/Data
+    stdin_open: true
+    tty: true
